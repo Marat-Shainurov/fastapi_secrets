@@ -1,3 +1,5 @@
+import os
+
 from isodate import parse_duration
 
 from app.models.secrets import SecretCreate, SecretBase
@@ -16,6 +18,6 @@ def create_secret_model(secret: SecretCreate) -> SecretBase:
     )
     new_secret = SecretBase(
         encoded_pass_key=encoded_key, encoded_content=encoded_content,
-        link=f'http://127.0.0.1:8000/secrets/read/{encoded_key}', pass_key_lifetime=encoded_pass_key_expires
+        link=f'{os.getenv("APP_URL")}/secrets/read/{encoded_key}', pass_key_lifetime=encoded_pass_key_expires
     )
     return new_secret
