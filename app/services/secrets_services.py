@@ -7,6 +7,12 @@ from app.services.encode_services import get_encoded_pass_key, encode_content
 
 
 def create_secret_model(secret: SecretCreate, pass_key_lifetime: str) -> SecretBase:
+    """
+    Created a new pydentic SecretBase model of a new secret.
+    :param secret: an instance of the SecretCreate model, of a new secret.
+    :param pass_key_lifetime: passed pass_key_lifetime value in ISO format (a choice from PassKeyLifetimeEnum).
+    :return: a new SecretBase instance.
+    """
     encoded_key = get_encoded_pass_key(
         data={"sub": dict(secret).get("pass_key")},
         expires_delta=parse_duration(pass_key_lifetime)
