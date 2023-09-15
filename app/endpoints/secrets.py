@@ -18,6 +18,13 @@ async def create_secret(
         secret: SecretCreate,
         pass_key_lifetime: PassKeyLifetimeEnum = Query(
             ..., description="Pass key lifetime. One day by default")):
+    """
+    Endpoint creates a new secret:
+    - **pass_key_lifetime**: each secret must have its lifetime (1 day (P1D in ISO format) as the default value).
+    - **content**: each secret has its content(must be longer than 1 symbol).
+    - **pass_key**: each secret must have a pass_key, which is used for the content and pass_key encoding,
+    and should be used for the secret's reading.
+    """
     new_secret = create_secret_model(secret, pass_key_lifetime.value)
     result = db.secrets.insert_one(dict(new_secret))
     created_secret = db.secrets.find_one({"_id": ObjectId(result.inserted_id)})
@@ -30,6 +37,11 @@ async def read_secret(
         pass_key: str = Query(..., description="Key to be verified and checked against the pass key of the secret"),
         encoded_pass_key: str = Path(..., description="Encoded pass key")
 ):
+    """
+    Endpoint for reading secrets:
+    - **encoded_pass_key**: encoded_pass_key of the secret.
+    - **pass_key**: pass_key previously set for the secret during its creation.
+    """
     secret = db.secrets.find_one({"encoded_pass_key": encoded_pass_key})
     decoded_pass_key = decode_data(encoded_pass_key, secret_encode_key=pass_key)
     if secret and decoded_pass_key == pass_key:
