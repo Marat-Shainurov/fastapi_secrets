@@ -4,8 +4,12 @@ from app.models.enums import PassKeyLifetimeEnum
 
 
 class SecretCreate(BaseModel):
-    content: str = Field(min_length=1, title='Secret content. Should be longer than 1 symbol')
-    pass_key: str = Field(min_length=5, title='Secret pass_key. Should be longer than 5 symbols.')
+    content: str = Field(
+        min_length=1, title='Secret content. Should be longer than 1 symbol', example='Your secret content'
+    )
+    pass_key: str = Field(
+        min_length=5, title='Secret pass_key. Should be longer than 5 symbols.', example="Your secret pass_key"
+    )
 
 
 class SecretBase(BaseModel):
