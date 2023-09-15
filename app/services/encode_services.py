@@ -32,7 +32,7 @@ def decode_data(encoded_content, secret_encode_key) -> str:
     except ExpiredSignatureError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Your pass key is expired!",
+            detail="Your pass key has expired!",
         )
     except JWTError:
         raise HTTPException(
