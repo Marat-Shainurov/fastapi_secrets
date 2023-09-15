@@ -40,7 +40,8 @@ async def read_secret(
             )
         else:
             decoded_content = decode_data(dict(secret).get("encoded_content"), secret_encode_key=pass_key)
-            db.secrets.find_one_and_update({"_id": ObjectId(secret.get("_id"))}, {"$set": {"is_active": False}})
+            db.secrets.find_one_and_update({"_id": ObjectId(secret.get("_id"))},
+                                           {"$set": {"is_active": False, "encoded_content": None}})
             return {"secret_content": decoded_content}
     else:
         raise HTTPException(
