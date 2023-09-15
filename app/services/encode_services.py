@@ -31,12 +31,12 @@ def decode_data(encoded_content, secret_encode_key) -> str:
         payload = jwt.decode(encoded_content, key=secret_encode_key, algorithms=ENCODE_ALGORITHM)
     except ExpiredSignatureError:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            status_code=status.HTTP_403_FORBIDDEN,
             detail="Your pass key has expired!",
         )
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Could not validate provided data",
+            detail="Either encoded_pass_key or pass_key are invalid!",
         )
     return payload.get("sub")

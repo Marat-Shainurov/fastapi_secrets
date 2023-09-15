@@ -64,4 +64,4 @@ async def read_secret(
 # todo:
 #  docker
 #  testing
-#  documentation enrichment
+#  cors
