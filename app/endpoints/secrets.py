@@ -64,7 +64,3 @@ async def read_secret(
             detail="Could not validate provided data. Either encoded_pass_key or pass_key are invalid!",
             status_code=status.HTTP_400_BAD_REQUEST
         )
-
-# todo:
-#  docker
-#  cors
