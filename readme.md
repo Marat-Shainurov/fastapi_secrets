@@ -34,7 +34,7 @@ Each secret's content are destroyed after the first reading. It cannot be read b
 8. /requirements.txt - main project dependencies.
 
 # Testing
-All the endpoint are covers by pytest test in /tests/test_main.py
+All the endpoints are covered by pytest tests in /tests/test_main.py
 
 # Security
 CORSMiddleware settings are added to the app in main.py.
