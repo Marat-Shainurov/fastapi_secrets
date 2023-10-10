@@ -18,3 +18,8 @@ class SecretBase(BaseModel):
     pass_key_lifetime: PassKeyLifetimeEnum = Field(PassKeyLifetimeEnum.one_day, title="Lifetime of the secret")
     is_active: bool = Field(title="Secret activity status", default=True)
     link: str = Field(..., title="URL to access the secret")
+
+
+class SecretOutput(BaseModel):
+    link: str = Field(..., title="URL to access the secret")
+    encoded_pass_key: str = Field(..., title='Encoded pass key of the secret')
