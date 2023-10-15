@@ -1,4 +1,4 @@
-# fastapi_secrets. General description.
+# General description
 _'fastapi_secrets'_ is a fastapi project.\
 The project is created for **anonymous exchanging sensitive information in a safe way**.\
 Each secret is created with a pass_key known only to the secret's creater and the reader.\
@@ -6,7 +6,7 @@ Both pass_key and the content itself are encoded before saving to the database.\
 Each secret's pass_key has its lifetime (expiration date). The secret can't be read after the lifetime has expired.\
 The contents of each secret are destroyed after the first reading. It cannot be read by someone else later.
 
-# Running the project
+# Install and usage
 1. install docker to your local machine if you have not already:
    https://docs.docker.com/get-docker/
 
@@ -16,7 +16,7 @@ The contents of each secret are destroyed after the first reading. It cannot be 
    - docker-compose build
    - docker-compose up
 
-4. Read the project's documentation (swagger or redoc format):
+4. Read the project's documentation (swagger or redoc):
    - http://127.0.0.1:8000/docs/
    - http://127.0.0.1:8000/redoc/
 
@@ -34,6 +34,6 @@ The contents of each secret are destroyed after the first reading. It cannot be 
 8. /requirements.txt - main project dependencies.
 
 # Testing
-All the endpoints are covered by pytest tests in /tests/test_main.py
+All the endpoints are covered by pytest tests in /tests/test_main.py \
 Run tests:
 - docker-compose exec app pytest tests
