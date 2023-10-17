@@ -1,10 +1,10 @@
 # General description
 _'fastapi_secrets'_ is a fastapi project.\
 The project is created for **anonymous exchanging sensitive information in a safe way**.\
-Each secret is created with a pass_key known only to the secret's creater and the reader.\
-Both pass_key and the content itself are encoded before saving to the database.\
-Each secret's pass_key has its lifetime (expiration date). The secret can't be read after the lifetime has expired.\
-The contents of each secret are destroyed after the first reading. It cannot be read by someone else later.
+Each secret is created with a pass_key known only to the secret's creator and the reader.\
+Both pass_key and the content itself are encoded before being saved to the database.
+Each secret's pass_key has its own lifetime (expiration date). The secret can't be read after its lifetime has expired.\
+Each secret's contents are destroyed after the first reading. It cannot be read by someone else later.
 
 # Install and usage
 1. install docker to your local machine if you have not already:
