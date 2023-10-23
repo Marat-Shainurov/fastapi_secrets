@@ -5,6 +5,7 @@ Each secret is created with a pass_key known only to the secret's creator and th
 Both pass_key and the content itself are encoded before being saved to the database.
 Each secret's pass_key has its own lifetime (expiration date). The secret can't be read after its lifetime has expired.\
 Each secret's contents are destroyed after the first reading. It cannot be read by someone else later.
+Main stack: Fastapi, MongoDB, Pydantic, python-jose.
 
 # Install and usage
 1. install docker to your local machine if you have not already:
